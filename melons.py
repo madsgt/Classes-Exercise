@@ -46,7 +46,6 @@ class InternationalMelonOrder(AbstractMelonOrder):
         """Initialize melon order attributes"""
         super(InternationalMelonOrder, self).__init__(species, 
                                                       qty, 
-                                                      country_code, 
                                                       0.17, 
                                                       "international")
         self.country_code = country_code
