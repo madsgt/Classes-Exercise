@@ -32,6 +32,11 @@ class AbstractMelonOrder(object):
             total = (1 + self.tax) * self.qty * base_price
             return float(total)
 
+        if self.order_type == "international" and self.qty < 10:
+            total = (1 + self.tax) * self.qty * base_price + self.flat_fee
+            return float(total)
+
+
 
     def mark_shipped(self):
         """Set shipped to true."""
@@ -62,12 +67,8 @@ class InternationalMelonOrder(AbstractMelonOrder):
         self.country_code = country_code
         self.flat_fee = 3
 
-    def get_total(self):
-        super(InternationalMelonOrder, self).get_total()
-        if self.qty < 10:
-            total = (1 + self.tax) * self.qty * base_price + self.flat_fee
-            return float(total)
-
+   
+        
         
     # We initialize a subclass and pass class attributes for tax and order_type
     # We also call upon the parent methods and atrributes
