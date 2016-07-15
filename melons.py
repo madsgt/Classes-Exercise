@@ -1,5 +1,6 @@
 """This file should have our order classes in it."""
 
+import random
 
 class AbstractMelonOrder(object):
     """A parent class to model domestic and international classes"""
