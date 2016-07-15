@@ -46,21 +46,24 @@ class AbstractMelonOrder(object):
     # We define the method mark_shipped that when called sets shipped == true
 
 class GovernmentMelonOrder(AbstractMelonOrder):
-    """ MElon Order for US Government"
+    """ MElon Order for US Government"""
 
     def __init__(self, species, qty):
-        super(GovernmentMelonOrder, self).__init__(species,qty,0.0,"government")
+        super(GovernmentMelonOrder, self).__init__(species, qty, 0.0,
+                                                "government")
 
         self.passed_inspection = False
 
     def mark_inspection(self, passed):
 
-        self.passed_inspection = True
+        self.passed_inspection = passed
+
+
 
 
 
 class DomesticMelonOrder(AbstractMelonOrder):
-    """ A domestic (within the US) melon order."""
+    """A domestic (within the US) melon order."""
 
     def __init__(self, species, qty):
         """Initialize melon order attributes"""
