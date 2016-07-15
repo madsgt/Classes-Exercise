@@ -63,9 +63,10 @@ class InternationalMelonOrder(AbstractMelonOrder):
         super(InternationalMelonOrder, self).__init__(species, 
                                                       qty, 
                                                       0.17,
-                                                      "international")
+                                                      "international",
+                                                      3)
         self.country_code = country_code
-        self.flat_fee = 3
+       
 
    
         
