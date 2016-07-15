@@ -4,23 +4,34 @@
 class AbstractMelonOrder(object):
     """A parent class to model domestic and international classes"""
 
-    def __init__(self,species,qty,tax,order_type):
+    def __init__(self,species,qty,tax,order_type,flat_fee=0):
         self.species = species
         self.qty = qty
         self.shipped = False 
         self.tax = tax
         self.order_type = order_type
+        self.flat_fee = flat_fee
 
+       
     # WE initialise the constructive function above to take common parameters 
     #for the subclasses and creates instance attributes
 
+
     def get_total(self):
         """Calculate price."""
-
         base_price = 5
-        total = (1 + self.tax) * self.qty * base_price
-        return float(total)
+        
     # We define the method get_total to calculate the total price for orders
+    # for self.species in species:
+
+        if self.species == "Christmas melon":
+            base_price = 1.5 * base_price
+            total = (1 + self.tax) * self.qty * base_price
+            return float(total)
+        else:
+            total = (1 + self.tax) * self.qty * base_price
+            return float(total)
+
 
     def mark_shipped(self):
         """Set shipped to true."""
@@ -46,9 +57,17 @@ class InternationalMelonOrder(AbstractMelonOrder):
         """Initialize melon order attributes"""
         super(InternationalMelonOrder, self).__init__(species, 
                                                       qty, 
-                                                      0.17, 
+                                                      0.17,
                                                       "international")
         self.country_code = country_code
+        self.flat_fee = 3
+
+    def get_total(self):
+        super(InternationalMelonOrder, self).get_total()
+        if self.qty < 10:
+            total = (1 + self.tax) * self.qty * base_price + self.flat_fee
+            return float(total)
+
         
     # We initialize a subclass and pass class attributes for tax and order_type
     # We also call upon the parent methods and atrributes
