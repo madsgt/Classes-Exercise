@@ -16,6 +16,14 @@ class AbstractMelonOrder(object):
     # WE initialise the constructive function above to take common parameters 
     #for the subclasses and creates instance attributes
 
+    def get_base_price(self):
+        """ Calculate base price during splurge"""
+
+        base_price = random.randrange(5, 10)
+
+
+        # need to complete code
+
 
     def get_total(self):
         """Calculate price."""
