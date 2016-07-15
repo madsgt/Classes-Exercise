@@ -2,6 +2,7 @@
 
 import random
 
+
 class AbstractMelonOrder(object):
     """A parent class to model domestic and international classes"""
 
@@ -20,7 +21,8 @@ class AbstractMelonOrder(object):
     def get_base_price(self):
         """ Calculate base price during splurge"""
 
-        base_price = random.randrange(5, 10)
+        base_price = random.randrange(5,10)
+        print base_price
 
 
         # need to complete code
@@ -28,22 +30,22 @@ class AbstractMelonOrder(object):
 
     def get_total(self):
         """Calculate price."""
-        base_price = 5
+    #     base_price = 5
         
-    # We define the method get_total to calculate the total price for orders
-    # for self.species in species:
+    # # We define the method get_total to calculate the total price for orders
+    # # for self.species in species:
 
-        if self.species == "Christmas melon":
-            base_price = 1.5 * base_price
-            total = (1 + self.tax) * self.qty * base_price
-            return float(total)
-        else:
-            total = (1 + self.tax) * self.qty * base_price
-            return float(total)
+    #     if self.species == "Christmas melon":
+    #         base_price = 1.5 * base_price
+    #         total = (1 + self.tax) * self.qty * base_price
+    #         return float(total)
+    #     else:
+    #         total = (1 + self.tax) * self.qty * base_price
+    #         return float(total)
 
-        if self.order_type == "international" and self.qty < 10:
-            total = (1 + self.tax) * self.qty * base_price + self.flat_fee
-            return float(total)
+    #     if self.order_type == "international" and self.qty < 10:
+    #         total = (1 + self.tax) * self.qty * base_price + self.flat_fee
+    #         return float(total)
 
 
 
