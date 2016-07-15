@@ -19,33 +19,26 @@ class AbstractMelonOrder(object):
     #for the subclasses and creates instance attributes
 
     def get_base_price(self):
-        """ Calculate base price during splurge"""
-
-        base_price = random.randrange(5,10)
-        print base_price
-
-
-        # need to complete code
+        """Randomly chooses a value for base_price between $5 - 9""" 
+        self.base_price = random.randrange(5,10)
 
 
     def get_total(self):
         """Calculate price."""
-    #     base_price = 5
+        base_price = self.get_base_price()
         
-    # # We define the method get_total to calculate the total price for orders
-    # # for self.species in species:
+    # We define the method get_total to calculate the total price for orders
+    # for self.species in species:
 
-    #     if self.species == "Christmas melon":
-    #         base_price = 1.5 * base_price
-    #         total = (1 + self.tax) * self.qty * base_price
-    #         return float(total)
-    #     else:
-    #         total = (1 + self.tax) * self.qty * base_price
-    #         return float(total)
-
-    #     if self.order_type == "international" and self.qty < 10:
-    #         total = (1 + self.tax) * self.qty * base_price + self.flat_fee
-    #         return float(total)
+        if self.species == "Christmas melon":
+            base_price = 1.5 * base_price
+            
+        total = (1 + self.tax) * self.qty * self.base_price
+        
+        if self.order_type == "international" and self.qty < 10:
+            total += self.flat_fee
+        
+        return float(total)
 
 
 
@@ -56,21 +49,20 @@ class AbstractMelonOrder(object):
 
     # We define the method mark_shipped that when called sets shipped == true
 
-class GovernmentMelonOrder(AbstractMelonOrder):
-    """ MElon Order for US Government"""
+class GovermentMelonOrder(AbstractMelonOrder):
+    """ Melon Orders for US Government"""
 
     def __init__(self, species, qty):
-        super(GovernmentMelonOrder, self).__init__(species, qty, 0.0,
-                                                "government")
+        """ Initialize melo prder for Government"""
+        super(GovermentMelonOrder, self).__init__(species, qty,0.0,"government")
 
         self.passed_inspection = False
 
+    # We initialize a subclass and pass class attributes for tax and order_type
+    # We also call upon the parent methods and atrributes
+
     def mark_inspection(self, passed):
-
         self.passed_inspection = passed
-
-
-
 
 
 class DomesticMelonOrder(AbstractMelonOrder):
