@@ -1,6 +1,7 @@
 """This file should have our order classes in it."""
 
 import random
+from datetime import datetime
 
 
 class AbstractMelonOrder(object):
@@ -20,12 +21,23 @@ class AbstractMelonOrder(object):
 
     def get_base_price(self):
         """Randomly chooses a value for base_price between $5 - 9""" 
+        self.now = datetime.now()
         self.base_price = random.randrange(5,10)
+
+        # if self.now >8 and self.now<11:
+        # Need to pseudocode further for day of the week , we can use 
+        #datetime.now defined as now and use now.weekday() to get the day and 
+        # then add $4 to the base price if falls in splurge range
+
+
+
+
 
 
     def get_total(self):
         """Calculate price."""
         base_price = self.get_base_price()
+
         
     # We define the method get_total to calculate the total price for orders
     # for self.species in species:
